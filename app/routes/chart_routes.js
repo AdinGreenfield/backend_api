@@ -15,6 +15,21 @@ module.exports = function(app, db) {
         });
     });
 
+    //find all chart Names for a specific user. In this case it is greenfia. NEEDS TO BE CHANGED
+    app.get('/charts/findAllCharts', (req, res) => {
+        // const details = {
+        //     fields:{ _id: 0, chartName: 1, userName: 0 }
+        // };
+        db.collection('charts').find({ userName: "greenfia"}, { fields: {chartName: 1, _id: 0}}).toArray(function(err, result) {
+            if (err) {
+                res.send({'error':'An error has occurred'});
+            } else {
+                console.log(result);
+                res.send(result);
+            }
+        });
+    });
+
     //delete chart
     app.delete('/charts/:id', (req, res) => {
         const id = req.params.id;
@@ -42,7 +57,7 @@ module.exports = function(app, db) {
         });
     });
 
-    //insert chart
+    //insert one chart
     app.post('/charts', function (req, res) {
         // You'll create your note here.
         //console.log(req.body)
