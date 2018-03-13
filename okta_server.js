@@ -9,6 +9,9 @@ module.exports = function OktaWebServer(sampleConfig, app) {
         client_id: sampleConfig.oidc.clientId,
         client_secret: sampleConfig.oidc.clientSecret,
         redirect_uri: sampleConfig.oidc.redirectUri,
+        routes: {
+            callback: { defaultRedirect: "/" }
+        },
         scope: sampleConfig.oidc.scope
     });
 
@@ -20,6 +23,16 @@ module.exports = function OktaWebServer(sampleConfig, app) {
 
     app.use(oidc.router);
 
+    app.get('/', oidc.ensureAuthenticated(), (req, res) => {
+
+        if (req.userinfo) {
+            res.send(`Hi ${req.userinfo.name}!`);
+            console.log(req.userinfo);
+        } else {
+            res.send('Hi!');
+        }
+    });
+
     oidc.on('ready', () => {
         app.listen(sampleConfig.port, () => console.log(`App started on port ${sampleConfig.port}`));
     });
@@ -28,4 +41,4 @@ module.exports = function OktaWebServer(sampleConfig, app) {
         // An error occurred while setting up OIDC
         throw err;
     });
-}
+};

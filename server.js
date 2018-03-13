@@ -18,13 +18,6 @@ MongoClient.connect(db.url, function(err, database) {
     const db = database.db("high_five")
     require('../backend_api/app/routes')(app, db);
 
-    // oidc.on('ready', () => {
-    //     app.listen(port, () => console.log(`We are live on ` + port));
-    // });
-    //
-    // oidc.on('error', err => {
-    //     console.log('Unable to configure ExpressOIDC', err);
-    // });
     new OktaWebServer(oktaConfig.webServer, app);
 
 })
