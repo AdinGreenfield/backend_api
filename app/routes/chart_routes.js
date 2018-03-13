@@ -16,7 +16,7 @@ module.exports = function(app, db) {
     });
 
     //find all chart Names for a specific user. In this case it is greenfia. NEEDS TO BE CHANGED
-    app.get('/charts/findAllCharts', (req, res) => {
+    app.get('/charts/findAllChartsForuser', (req, res) => {
         // const details = {
         //     fields:{ _id: 0, chartName: 1, userName: 0 }
         // };
