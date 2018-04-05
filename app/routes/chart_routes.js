@@ -43,32 +43,32 @@ module.exports = function(app, db) {
     //     });
     // });
 
-    //update chart
-    app.put('/charts/:id', (req, res) => {
-        const id = req.params.id;
-        const details = { '_id': new ObjectID(id) };
-        const chart = { text: req.body.body, title: req.body.title };
-        db.collection('charts').updateOne(details, chart, (err, result) => {
-            if (err) {
-                res.send({'error':'An error has occurred'});
-            } else {
-                res.send(note);
-            }
-        });
-    });
+    // //update chart
+    // app.put('/charts/:id', (req, res) => {
+    //     const id = req.params.id;
+    //     const details = { '_id': new ObjectID(id) };
+    //     const chart = { text: req.body.body, title: req.body.title };
+    //     db.collection('charts').updateOne(details, chart, (err, result) => {
+    //         if (err) {
+    //             res.send({'error':'An error has occurred'});
+    //         } else {
+    //             res.send(note);
+    //         }
+    //     });
+    // });
 
-    //insert one chart
-    app.post('/charts', function (req, res) {
-        // You'll create your note here.
-        //console.log(req.body)
-        //res.send('Hello')
-        const chart = {userName: req.body.title, chartName: req.body.body};
-        db.collection('charts').insertOne(chart, function (err, result) {
-            if (err) {
-                res.send({'error': 'An error has occurred'});
-            } else {
-                res.send(result.ops[0]);
-            }
-        });
-    });
+    // //insert one chart
+    // app.post('/charts', function (req, res) {
+    //     // You'll create your note here.
+    //     //console.log(req.body)
+    //     //res.send('Hello')
+    //     const chart = {userName: req.body.title, chartName: req.body.body};
+    //     db.collection('charts').insertOne(chart, function (err, result) {
+    //         if (err) {
+    //             res.send({'error': 'An error has occurred'});
+    //         } else {
+    //             res.send(result.ops[0]);
+    //         }
+    //     });
+    // });
 }
