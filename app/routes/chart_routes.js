@@ -30,18 +30,18 @@ module.exports = function(app, db) {
         });
     });
 
-    //delete chart
-    app.delete('/charts/:id', (req, res) => {
-        const id = req.params.id;
-        const details = { '_id': new ObjectID(id) };
-        db.collection('charts').removeOne(details, (err, item) => {
-            if (err) {
-                res.send({'error':'An error has occurred'});
-            } else {
-                res.send('Note ' + id + ' deleted!');
-            }
-        });
-    });
+    // //delete chart
+    // app.delete('/charts/:id', (req, res) => {
+    //     const id = req.params.id;
+    //     const details = { '_id': new ObjectID(id) };
+    //     db.collection('charts').removeOne(details, (err, item) => {
+    //         if (err) {
+    //             res.send({'error':'An error has occurred'});
+    //         } else {
+    //             res.send('Note ' + id + ' deleted!');
+    //         }
+    //     });
+    // });
 
     //update chart
     app.put('/charts/:id', (req, res) => {
