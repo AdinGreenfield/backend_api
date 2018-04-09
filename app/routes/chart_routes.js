@@ -1,6 +1,11 @@
 var ObjectID = require('mongodb').ObjectID;
 
+var bodyParser = require('body-parser');
+
 module.exports = function(app, db) {
+
+    app.use(bodyParser.json());
+    app.use(bodyParser.urlencoded({ extended: false }));
 
     //read chart
     app.get('/charts', (req, res) => {
@@ -68,6 +73,7 @@ module.exports = function(app, db) {
                 res.send({'error': 'An error has occurred'});
             } else {
                 res.send(result.ops[0]);
+
             }
         });
     });
