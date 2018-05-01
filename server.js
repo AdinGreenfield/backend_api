@@ -2,7 +2,6 @@ const express        = require('express');
 const MongoClient    = require('mongodb').MongoClient;
 const bodyParser     = require('body-parser');
 const app            = express();
-const port = 8000;
 const db             = require('../backend_api/config/db');
 const oktaConfig = require('../backend_api/config/login');
 const OktaWebServer = require('./okta_server');
