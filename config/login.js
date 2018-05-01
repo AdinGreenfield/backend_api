@@ -1,6 +1,6 @@
 module.exports = {
     "webServer": {
-        "port": 8000,
+        "port": process.env.PORT,
         "oidc": {
             "clientId": "0oateuxvuiDpafd8K2p6",
             "clientSecret": "btrsG3nE0sVnavUbqWZJBY9mi7c5ZuesLLsM4dX-",
